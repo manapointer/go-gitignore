@@ -158,7 +158,7 @@ type IgnorePattern struct {
 
 // GitIgnore wraps a list of ignore pattern.
 type GitIgnore struct {
-	patterns []*IgnorePattern
+	Patterns []*IgnorePattern
 }
 
 // CompileIgnoreLines accepts a variadic set of strings, and returns a GitIgnore
@@ -171,7 +171,7 @@ func CompileIgnoreLines(lines ...string) *GitIgnore {
 		if pattern != nil {
 			// LineNo is 1-based numbering to match `git check-ignore -v` output
 			ip := &IgnorePattern{pattern, negatePattern, i + 1, line}
-			gi.patterns = append(gi.patterns, ip)
+			gi.Patterns = append(gi.Patterns, ip)
 		}
 	}
 	return gi
@@ -220,7 +220,7 @@ func (gi *GitIgnore) MatchesPathHow(f string) (bool, *IgnorePattern) {
 
 	matchesPath := false
 	var mip *IgnorePattern
-	for _, ip := range gi.patterns {
+	for _, ip := range gi.Patterns {
 		if ip.Pattern.MatchString(f) {
 			// If this is a regular target (not negated with a gitignore
 			// exclude "!" etc)

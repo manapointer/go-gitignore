@@ -124,7 +124,7 @@ abc/def
 	assert.Nil(t, err, "err should be nil")
 	assert.NotNil(t, object, "object should not be nil")
 
-	assert.Equal(t, 2, len(object.patterns), "should have two regex pattern")
+	assert.Equal(t, 2, len(object.Patterns), "should have two regex pattern")
 	assert.Equal(t, false, object.MatchesPath("abc/abc"), "/abc/abc should not match")
 	assert.Equal(t, true, object.MatchesPath("abc/def"), "/abc/def should match")
 }
@@ -142,7 +142,7 @@ d/e/f
 	assert.Nil(t, err, "err should be nil")
 	assert.NotNil(t, object, "object should not be nil")
 
-	assert.Equal(t, 3, len(object.patterns), "should have 3 regex patterns")
+	assert.Equal(t, 3, len(object.Patterns), "should have 3 regex patterns")
 	assert.Equal(t, true, object.MatchesPath("a/b/c"), "a/b/c should match")
 	assert.Equal(t, true, object.MatchesPath("a/b/c/d"), "a/b/c/d should match")
 	assert.Equal(t, true, object.MatchesPath("d/e/f"), "d/e/f should match")
